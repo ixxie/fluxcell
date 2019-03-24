@@ -10,4 +10,7 @@ export default class User extends Model {
   $beforeInsert() {
     this.created = getLocalTime();
   }
+  $beforeUpdate() {
+    this.updated = getLocalTime();
+  }
 }
