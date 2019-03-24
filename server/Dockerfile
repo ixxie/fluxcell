@@ -1,12 +1,12 @@
-FROM node:8.12.0
+FROM node:10.8.0
 
-WORKDIR /usr/src/app
+RUN mkdir /server
+ADD . /server
+WORKDIR /server
 RUN npm install -g yarn
-COPY package.json ./
 RUN yarn install
-
-COPY . .
 RUN yarn build
 
 EXPOSE 4444
 CMD [ "yarn", "start:prod" ]
+
