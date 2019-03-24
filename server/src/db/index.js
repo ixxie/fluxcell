@@ -1,19 +1,11 @@
 import 'dotenv/config';
-import { Database, aql } from 'arangojs';
 import { log } from '../utils/logger';
+import { initDB } from './initDB';
 
 class DB {
   constructor() {
     try {
-      log('initializing database');
-      log('env', process.env.NODE_ENV);
-      log('databaseurl_prod', process.env.DATABASE_URL_PROD);
-      log('databaseurl_dev', process.env.DATABASE_URL_DEV);
-      this.db = new Database({
-        url: process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL_PROD : process.env.DATABASE_URL_DEV,
-      });
-      this.db.useDatabase('fluxgraph');
-      this.db.useBasicAuth('root', process.env.DATABASE_PASSWORD_ROOT);
+      initDB();
     } catch (err) {
       log('database login failed', err);
     }

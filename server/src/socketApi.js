@@ -1,4 +1,3 @@
-import { saveMessageToChannel } from './db/manipulation';
 import { log } from './utils/logger';
 
 const io = require('socket.io')();
@@ -22,7 +21,7 @@ module.exports = function socketApi({ httpServer }) {
     socket.on('chatListener', async (msg) => {
       log('saving messages to channel');
       try {
-        await saveMessageToChannel(msg);
+        // await saveMessageToChannel(msg);
       } catch (err) {
         log(err);
       }
