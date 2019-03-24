@@ -3,7 +3,7 @@ import { log } from '../utils/logger';
 import { initDB } from './initDB';
 
 class DB {
-  constructor() {
+  init() {
     try {
       initDB();
     } catch (err) {
