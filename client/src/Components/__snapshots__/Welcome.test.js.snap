@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<div
+  className="sc-bdVaJa hqgvtt card"
+>
+  <img
+    alt="Card image cap"
+    className="card-img-top"
+    src="https://i.imgur.com/n744BL9.png"
+    width="100%"
+  />
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      Welcome Fluxcraft GUI
+    </h5>
+    <h6
+      className="card-subtitle"
+    >
+      Will be awesome
+    </h6>
+    <p
+      className="card-text"
+    />
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      type={undefined}
+    >
+      This button does nothing
+    </button>
+  </div>
+</div>
+`;

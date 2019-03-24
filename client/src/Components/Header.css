@@ -1,0 +1,19 @@
+.logo {
+  content: url(../img/logo.png);
+  height: 35px;
+}
+
+.user__auth {
+  font-size: 0.8em;
+}
+
+.header .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.header .nav-item {
+    display: flex;
+    align-items: center;
+}
