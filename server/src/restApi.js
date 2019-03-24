@@ -1,5 +1,4 @@
 import { log } from './utils/logger';
-import Space from './db/models/Space';
 
 module.exports = function restApi(app) {
   app.post('/api/postTest', (req, res) => {
@@ -15,7 +14,7 @@ module.exports = function restApi(app) {
   app.get('/api/getPostsByChannel', async (req, res) => {
     log('getting posts by channel', req.query.q);
 
-    const posts = await Space.getMessagesOfSpace(req.query.q);
+    // const posts = await Space.getMessagesOfSpace(req.query.q);
     res.json({ payload: posts });
   });
 };

@@ -7,7 +7,9 @@
     "@babel/polyfill": "^7.0.0",
     "arangojs": "^6.6.0",
     "body-parser": "^1.18.3",
+    "boxen": "^3.0.0",
     "chalk": "^2.4.1",
+    "consola": "^2.5.7",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
@@ -23,6 +25,7 @@
     "passport-facebook": "^2.1.1",
     "path": "^0.12.7",
     "socket.io": "^2.1.1",
+    "stacktrace-parser": "^0.1.4",
     "uuid": "^3.3.2",
     "winston": "^3.1.0"
   },

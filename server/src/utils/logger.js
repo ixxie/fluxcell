@@ -11,11 +11,6 @@ export function log(...msg) {
 }
 
 const logger = createLogger({
-  format: format.combine(
-    format.timestamp(),
-    format.json()
-  ),
-  transports: [new transports.Console(),
-    new transports.File({ filename: 'log.log' })],
+  format: format.combine(format.timestamp(), format.json()),
+  transports: [new transports.Console(), new transports.File({ filename: 'log.log' })],
 });
-
