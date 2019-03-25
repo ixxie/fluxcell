@@ -1,7 +1,9 @@
 from pinhook.bot import Bot
-import yaml
+from ruamel.yaml import YAML
 
 from fluxbot.nlp.model import Model
+
+yaml = YAML(typ='safe')
 
 
 class Fluxbot(Bot):
