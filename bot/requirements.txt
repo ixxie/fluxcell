@@ -1,4 +1,4 @@
 pinhook==1.7.1
 flair==0.4.0
-pyyaml==3.13
+ruamel.yaml==0.15.89
 imgurpython==1.1.7
