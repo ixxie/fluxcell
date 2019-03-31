@@ -1,4 +1,5 @@
 import { log } from './utils/logger';
+import { createCell, createSpace, createUser, createMessage, createChannel } from './db/helper';
 
 module.exports = function restApi(app) {
   app.post('/api/postTest', (req, res) => {
@@ -11,10 +12,36 @@ module.exports = function restApi(app) {
     res.json({ payload: 'ok', status: 'getTest OK' });
   });
 
-  app.get('/api/getPostsByChannel', async (req, res) => {
-    log('getting posts by channel', req.query.q);
+  app.post('/api/createSpace', async (req, res) => {
+    log('creating new Space', req.body);
+    const r = await createSpace({ name: req.body.name });
 
-    // const posts = await Space.getMessagesOfSpace(req.query.q);
-    res.json({ payload: posts });
+    res.json({ payload: r });
+  });
+
+  app.post('/api/createChannel', async (req, res) => {
+    log('creating new Channel', req.query.q);
+    const { spaceId, title, topic } = req.body;
+    const r = await createChannel({ spaceId, title, topic });
+
+    res.json({ payload: r });
+  });
+
+  app.post('/api/createUser', async (req, res) => {
+    log('creating new User', req.body);
+    const { username, email } = req.body;
+
+    const r = await createUser({ username, email });
+
+    res.json({ payload: r });
+  });
+
+  app.post('/api/createMessage', async (req, res) => {
+    log('creating new Message', req.body);
+    const { userId, channelId, body } = req.body;
+
+    const r = await createMessage({ userId, channelId, body });
+
+    res.json({ payload: r });
   });
 };
