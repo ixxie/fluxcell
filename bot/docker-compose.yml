@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  freenode-fluxbot:
+    image: fluxcraft/fluxbot
+    volumes:
+      - ./data/freenode:/data/
+    build: .
+  maddshark-fluxbot:
+    image: fluxcraft/fluxbot
+    volumes:
+      - ./data/maddshark:/data/
+    build: .
