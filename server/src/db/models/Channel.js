@@ -2,6 +2,7 @@ import { Model } from 'objection';
 import { getLocalTime } from '../../utils/helper.js';
 import Message from './Message';
 import Space from './Space';
+import User from './User.js';
 
 export default class Channel extends Model {
   static get tableName() {
@@ -24,6 +25,18 @@ export default class Channel extends Model {
         join: {
           from: 'space.id',
           to: 'channel.spaceid',
+        },
+      },
+      user: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: 'channel.id',
+          through: {
+            from: 'user_channel.channelid',
+            to: 'user_channel.userid',
+          },
+          to: 'user.id',
         },
       },
     };
