@@ -51,8 +51,24 @@ INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
 CREATE TABLE "public"."user"
 (
     "id" integer DEFAULT nextval('user_id_seq') NOT NULL,
+    "spaceid" integer NOT NULL,
     "username" text NOT NULL,
     "email" text NOT NULL,
+    "created" timestamp,
+    "updated" timestamp
+)
+WITH (oids = false);
+
+DROP TABLE IF EXISTS "user_channel";
+DROP SEQUENCE IF EXISTS user_channel_id_seq;
+CREATE SEQUENCE user_channel_id_seq
+INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1;
+
+CREATE TABLE "public"."user_channel"
+(
+    "id" integer DEFAULT nextval('user_channel_id_seq') NOT NULL,
+    "userid" integer NOT NULL,
+    "channelid" integer NOT NULL,
     "created" timestamp,
     "updated" timestamp
 )

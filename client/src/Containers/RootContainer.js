@@ -8,7 +8,6 @@ import Routes from '../Components/Routes';
 import Header from '../Components/Header';
 
 const RootContainer = (props) => {
-
   if (props.isInitializing === undefined || props.isInitializing) {
     const LoadingSpinnerWithContainer = withContainer(LoadingSpinner);
 
@@ -26,7 +25,7 @@ const RootContainer = (props) => {
           <ContainerWithMargin fluid className="rootContainer">
             <Row className="mb-4 welcome-row">
               <Col sm="12" className="welcome-row__col">
-                <Routes {...props} />
+                <Routes />
               </Col>
             </Row>
           </ContainerWithMargin>

@@ -1,9 +1,59 @@
 import React from 'react';
-import PublicChat from '../Components/PublicChat';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps, mergeProps } from '../utils/mapper';
+import { Row, Col, Card, CardBody, CardTitle, CardImg, CardSubtitle, CardText, Button } from 'reactstrap';
+import Chat from '../Components/Chat';
+
 import './mainContainer.css';
 
 const MainContainer = props => (
-  <PublicChat className="public-chat-container" {...props} />
+  <Row>
+    <Col xs="4">
+      <div>
+        <Card>
+          <CardBody>
+            <CardTitle>Card title</CardTitle>
+            <CardSubtitle>Card subtitle</CardSubtitle>
+            <CardText>
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </CardText>
+            <Button>Button</Button>
+          </CardBody>
+        </Card>
+      </div>
+      <div>
+        <Card>
+          <CardBody>
+            <CardTitle>Card title</CardTitle>
+            <CardSubtitle>Card subtitle</CardSubtitle>
+            <CardText>
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </CardText>
+            <Button>Button</Button>
+          </CardBody>
+        </Card>
+      </div>
+      <div>
+        <Card>
+          <CardBody>
+            <CardTitle>Card title</CardTitle>
+            <CardSubtitle>Card subtitle</CardSubtitle>
+            <CardText>
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </CardText>
+            <Button>Button</Button>
+          </CardBody>
+        </Card>
+      </div>
+    </Col>
+    <Col xs="8">
+      <Chat {...props} />
+    </Col>
+  </Row>
 );
 
-export default MainContainer;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(MainContainer);
