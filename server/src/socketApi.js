@@ -1,5 +1,5 @@
 import { log } from './utils/logger';
-import { SaveMessageToSpace, getUser } from './db/helper';
+import { getUser, createMessage } from './db/helper';
 
 const io = require('socket.io')();
 const uuid = require('uuid/v1');
@@ -19,10 +19,10 @@ module.exports = function socketApi({ httpServer }) {
       io.sockets.emit('chatTestEmit', `Hello ${msg}, now is ${new Date().toString()}`);
     });
 
-    socket.on('chatListener', async ({ spaceId, userId, body }) => {
+    socket.on('chatListener', async ({ channelId, userId, body }) => {
       log('saving messages to space');
       try {
-        await SaveMessageToSpace({ spaceId, userId, body });
+        await createMessage({ channelId, userId, body });
       } catch (err) {
         log(err);
       }

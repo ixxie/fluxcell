@@ -47,7 +47,6 @@ const enhance = compose(
   withState('isSubscribedToSocket', 'subscribeToSocket', false),
   withHandlers({
     addMessage: props => (message) => {
-
       if (props.messages.find(msg => msg.id === message.id) === undefined) {
         props.messages.push(message);
       }

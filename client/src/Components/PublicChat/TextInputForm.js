@@ -23,6 +23,7 @@ const TextInput = (props) => {
 
   const sendMessage = (body) => {
     console.log('emit', body);
+    const profile = authClient.getProfile();
     emit({ name: 'chatListener', msg: { username: authClient.getProfileForeName(), body, channel } });
   };
 

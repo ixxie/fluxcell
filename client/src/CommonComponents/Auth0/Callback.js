@@ -1,15 +1,18 @@
-
-
 /* eslint class-methods-use-this: 0 */
 
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import auth0Client from './authClient';
 import { LoadingSpinner, withContainer } from '../index';
+import { createUser } from '../../utils/clientHelper';
 
 class Callback extends Component {
   async componentDidMount() {
     await auth0Client.handleAuthentication();
+
+    const profile = JSON.parse(sessionStorage.getItem('profile'));
+
+    const res = await createUser({ name: profile.name, email: '' });
     this.props.history.replace('/');
   }
 

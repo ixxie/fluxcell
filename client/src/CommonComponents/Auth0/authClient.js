@@ -1,4 +1,3 @@
-
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
 
@@ -21,7 +20,6 @@ class Auth {
 
   getProfile() {
     try {
-
       const profile = JSON.parse(sessionStorage.getItem('profile'));
       return profile;
     } catch (err) {
@@ -50,7 +48,7 @@ class Auth {
         sessionStorage.setItem('id_token', authResult.idToken);
         sessionStorage.setItem('expires_at', expiresAt);
         sessionStorage.setItem('profile', JSON.stringify(authResult.idTokenPayload));
-        resolve();
+        resolve(authResult);
       });
     });
   }
