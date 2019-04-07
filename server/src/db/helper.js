@@ -3,10 +3,11 @@ import Space from './models/Space';
 import Message from './models/Message';
 import Channel from './models/Channel';
 
-export async function createUser({ username, email }) {
+export async function createUser({ userName, email, spaceId }) {
   const user = await User.query().insert({
-    username,
+    username: userName,
     email,
+    spaceid: spaceId,
   });
   return user;
 }

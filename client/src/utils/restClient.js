@@ -2,7 +2,7 @@ function getFullEndpoint(endpoint, query) {
   const param = query ? `api/${endpoint}?q=${query}` : `api/${endpoint}`;
   const host = process.env.REACT_APP_HOST;
   const port = process.env.REACT_APP_SERVER_PORT;
-  return `${host}:${port}/${param}`;
+  return `http://${host}:${port}/${param}`;
 }
 function get(endpoint, query) {
   const fullEndpoint = getFullEndpoint(endpoint, query);
