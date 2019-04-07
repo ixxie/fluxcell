@@ -47,7 +47,7 @@
     "eslint-plugin-react": "^7.1.0",
     "prettier-eslint": "^8.8.2",
     "react-app-env": "^1.2.2",
-    "react-scripts": "1.1.5",
+    "react-scripts": "2.1.8",
     "react-test-renderer": "^16.4.2",
     "redux-mock-store": "^1.5.3"
   },
@@ -57,5 +57,11 @@
     "build:dev": "env-cmd .env.development react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

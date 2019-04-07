@@ -38,7 +38,7 @@ const TextInput = (props) => {
             data-lpignore="true"
             validate={required}
             ref={(input) => {
-              this.chatMessageInput = input;
+              // this.chatMessageInput = input;
             }}
           />
         </CardBody>
