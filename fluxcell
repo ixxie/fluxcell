@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -eu
+
+# parse arguments
+command="$1"
+args="${@:2}"
+
+# find compose files in these dirs
+services=(
+  client 
+  server
+)
+
+# build the docker-compose command
+script="docker-compose -p fluxcell "
+
+for service in "${services[@]}"
+do
+  script+="-f ./$service/docker-compose.yml "
+done
+
+script+="$command $args"
+
+# run the docker-compose command
+eval "$script"
