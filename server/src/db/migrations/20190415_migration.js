@@ -4,7 +4,8 @@ exports.up = knex =>
       table.increments('id').primary();
       table.string('name');
       table.string('email');
-      table.dateTime('created_at', true);
+      table.timestamp('created_at', true);
+      table.timestamp('updated_at', true);
     })
     .createTable('channel', (table) => {
       table.increments('id').primary();
@@ -17,19 +18,20 @@ exports.up = knex =>
       table.string('title');
       table.string('topic');
       table.timestamp('created_at', true);
+      table.timestamp('updated_at', true);
     })
     .createTable('user', (table) => {
       table.increments('id').primary();
       table.string('username');
       table.string('email');
-
       table
         .integer('space_id')
         .unsigned()
         .references('id')
         .inTable('space')
         .onDelete('CASCADE');
-      table.dateTime('created_at', true);
+      table.timestamp('created_at', true);
+      table.timestamp('updated_at', true);
     })
     .createTable('message', (table) => {
       table.increments('id').primary();
@@ -46,7 +48,8 @@ exports.up = knex =>
         .references('id')
         .inTable('user')
         .onDelete('CASCADE');
-      table.dateTime('created_at', true);
+      table.timestamp('created_at', true);
+      table.timestamp('updated_at', true);
     })
     .createTable('attachment', (table) => {
       table.increments('id').primary();
@@ -57,7 +60,8 @@ exports.up = knex =>
         .references('id')
         .inTable('message')
         .onDelete('CASCADE');
-      table.dateTime('created_at', true);
+      table.timestamp('created_at', true);
+      table.timestamp('updated_at', true);
     });
 
 exports.down = knex =>
