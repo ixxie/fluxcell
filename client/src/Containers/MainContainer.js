@@ -5,6 +5,7 @@ import { Row, Col, Card, CardBody, CardTitle, CardImg, CardSubtitle, CardText, B
 import Chat from '../Components/Chat';
 
 import './mainContainer.css';
+import Space from '../Components/Space';
 
 const MainContainer = props => (
   <Row>
@@ -12,12 +13,11 @@ const MainContainer = props => (
       <div>
         <Card>
           <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>Card subtitle</CardSubtitle>
+            <CardTitle>Create Space</CardTitle>
+            <CardSubtitle />
             <CardText>
-              Some quick example text to build on the card title and make up the bulk of the card's content.
+              <Space />
             </CardText>
-            <Button>Button</Button>
           </CardBody>
         </Card>
       </div>

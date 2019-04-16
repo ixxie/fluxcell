@@ -3,7 +3,6 @@ exports.up = knex =>
     .createTable('space', (table) => {
       table.increments('id').primary();
       table.string('name');
-      table.string('email');
       table.timestamp('created_at', true);
       table.timestamp('updated_at', true);
     })
