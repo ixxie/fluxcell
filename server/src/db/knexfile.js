@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../../../.env' });
+require('dotenv').config({ path: '../../.env' });
 
 const host = process.env.PGHOST;
 const user = process.env.PGUSER;

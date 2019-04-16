@@ -7,7 +7,7 @@ export async function createUser({ userName, email, spaceId }) {
   const user = await User.query().insert({
     username: userName,
     email,
-    spaceid: spaceId,
+    space_id: spaceId,
   });
   return user;
 }
@@ -20,8 +20,8 @@ export async function getUser(id) {
 export async function createMessage({ channelId, userId, body }) {
   const res = await Message.query().insert({
     body,
-    userId,
-    channelId,
+    user_id: userId,
+    channel_id: channelId,
   });
 
   return res;
@@ -37,7 +37,7 @@ export async function createSpace({ name }) {
 
 export async function createChannel({ spaceId, title, topic }) {
   const res = await Channel.query().insert({
-    spaceId,
+    space_id: spaceId,
     title,
     topic,
   });
