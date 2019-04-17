@@ -27,6 +27,17 @@ export async function createMessage({ channelId, userId, body }) {
   return res;
 }
 
+export async function getSpace({ name }) {
+  console.log('getSpace', name);
+  const res = await Space.query().where('name', '=', name);
+  return res;
+}
+
+export async function getSpaces() {
+  const res = await Space.query();
+  return res;
+}
+
 export async function createSpace({ name }) {
   const res = await Space.query().insert({
     name,

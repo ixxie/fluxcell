@@ -44,4 +44,9 @@ module.exports = function restApi(app) {
 
     res.json({ payload: r });
   });
+
+  app.get('/api/getSpaceByName', (req, res) => {
+    log('req.query', req.query);
+    res.json({ payload: 'ok', status: 'getTest OK' });
+  });
 };
