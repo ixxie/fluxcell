@@ -1,25 +1,51 @@
 import { ApolloServer, gql } from 'apollo-server-express';
 import { getSpace, getSpaces } from './db/helper';
-import { getHeapSpaceStatistics } from 'v8';
+import { GraphQLScalarType } from 'graphql';
+import { Kind } from 'graphql/language';
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
-  type Space {
-    name: String
-  }
-
-  # The "Query" type is the root of all GraphQL queries.
   type Query {
     spaces: [Space]
-    space(name: String): Space
+    spaceByName(name: String): Space
+  }
+  scalar Date
+
+  type Space {
+    id: ID
+    name: String
+    email: String
+    created_at: Date
+    updated_at: Date
   }
 `;
+
+const dateType = new GraphQLScalarType({
+  name: 'Date',
+  description: 'Date custom scalar type',
+  parseValue(value) {
+    return new Date(value);
+  },
+  serialize(value) {
+    return value.getTime();
+  },
+  parseLiteral(ast) {
+    if (ast.kind === Kind.INT) {
+      return parseInt(ast.value, 10);
+    }
+    return null;
+  },
+});
 
 const resolvers = {
   Query: {
     spaces: () => getSpaces(),
-    space: (parent, args, context, info) => getSpace({ name: args.name }),
+    spaceByName: async (parent, args, context, info) => {
+      const res = await getSpace({ name: args.name });
+      return res[0];
+    },
   },
+  Date: dateType,
 };
 
 export const createServer = (app) => {

@@ -28,7 +28,6 @@ export async function createMessage({ channelId, userId, body }) {
 }
 
 export async function getSpace({ name }) {
-  console.log('getSpace', name);
   const res = await Space.query().where('name', '=', name);
   return res;
 }
