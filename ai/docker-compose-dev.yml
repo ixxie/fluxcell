@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+
+  ai:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./store:/store/
+      - ./ai/:/ai/

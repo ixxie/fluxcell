@@ -1,13 +1,13 @@
 FROM pytorch/pytorch
 
 # Install dependencies
-COPY requirements.txt /app/
+COPY requirements.txt /bot/
 
-WORKDIR /app
+WORKDIR /bot
 RUN pip install -r requirements.txt
 
 # Install fluxbot
-COPY . /app/
+COPY . /bot/
 RUN python3 setup.py install
 
 # Run fluxbot

@@ -1,8 +1,11 @@
 version: '3.7'
 
 services:
-  odm:
-    image: odm
-    volumes:
-      - ./data:/data/
-    build: .
+
+  ai:
+    build:
+      context: ./ai
+    image: fluxcell/ai
+    restart: unless-stopped
+    env_file:
+      - ./ai/.env
