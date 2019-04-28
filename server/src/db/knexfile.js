@@ -9,7 +9,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: 'localhost',
+      host: 'postgres',
       user,
       password,
       database,

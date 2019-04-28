@@ -3,6 +3,7 @@ version: "3.7"
 services:
   client:
     image: fluxcell/client
+    restart: unless-stopped
     build:
       context: ./client
 
