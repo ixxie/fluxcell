@@ -2,6 +2,6 @@ version: "3.7"
 
 services:
   client:
-    image: fluxcraft/fluxclient
+    image: fluxcell/client
     build: .
 

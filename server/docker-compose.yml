@@ -1,10 +1,12 @@
 version: "3.7"
 
 services:
+  server:
+    image: fluxcell/server
+    build: . 
   postgres:
     image: postgres
     restart: always
-    image: postgres
     environment:
       - POSTGRES_PASSWORD=${PGPASSWORD}
       - POSTGRES_USER=${PGUSER}
