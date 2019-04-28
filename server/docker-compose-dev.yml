@@ -4,4 +4,3 @@ services:
   server:
     volumes:
       - ./src:/server 
-    command: ["yarn", "start:dev"]

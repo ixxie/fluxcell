@@ -33,9 +33,9 @@ class Model:
         else:
             print('downloading pretrained embedders')
             self.embeddings = [
-                #WordEmbeddings('glove'),
+                # WordEmbeddings('glove'),
                 FlairEmbeddings('multi-forward')
-                #FlairEmbeddings('multi-backward')
+                # FlairEmbeddings('multi-backward')
             ]
             filestream = open(embeddings_file, 'wb')
             pickle.dump(self.embeddings, filestream)
