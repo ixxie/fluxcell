@@ -1,5 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server-express';
-import { getSpace, getSpaces } from './db/helper';
+import { getSpace, getSpaces, createSpace, updateSpace } from './db/helper';
 import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
 
@@ -9,15 +9,20 @@ const typeDefs = gql`
     spaces: [Space]
     spaceByName(name: String): Space
   }
-  scalar Date
 
   type Space {
     id: ID
     name: String
-    email: String
     created_at: Date
     updated_at: Date
   }
+
+  type Mutation {
+    createSpace(name: String): Space
+    updateSpace(id: ID, name: String): ID
+  }
+
+  scalar Date
 `;
 
 const dateType = new GraphQLScalarType({
@@ -40,9 +45,19 @@ const dateType = new GraphQLScalarType({
 const resolvers = {
   Query: {
     spaces: () => getSpaces(),
-    spaceByName: async (parent, args, context, info) => {
+    spaceByName: async (_parent, args) => {
       const res = await getSpace({ name: args.name });
       return res[0];
+    },
+  },
+  Mutation: {
+    createSpace: async (_parent, args) => {
+      const res = await createSpace({ name: args.name });
+      return res;
+    },
+    updateSpace: async (_parent, args) => {
+      const res = await updateSpace({ id: args.id, name: args.name });
+      return res;
     },
   },
   Date: dateType,

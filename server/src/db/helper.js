@@ -45,6 +45,15 @@ export async function createSpace({ name }) {
   return res;
 }
 
+export async function updateSpace({ id, name }) {
+  const res = await Space.query()
+    .findById(id)
+    .patch({
+      name,
+    });
+  return res;
+}
+
 export async function createChannel({ spaceId, title, topic }) {
   const res = await Channel.query().insert({
     space_id: spaceId,
