@@ -4,6 +4,20 @@ fluxcell is a bot, messaging platform, database and search engine rolled into on
 
 This is in early development, not really usable.
 
+## Running
+
+To run, use the `./fluxcell` CLI, with an optional `--dev` flag for hotloaded development mode.
+
+This wraps docker-compose, so you can:
+
+```bash
+./fluxcell --dev up -d --build
+```
+
+To run a development build, which should only be rebuilt when dependencies change.
+
+## Diagrams
+
 Basic layout:  
 ![fluxcell layout](docs/fluxcell-layout.png)
 
