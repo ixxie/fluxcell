@@ -3,7 +3,8 @@ version: "3.7"
 services:
   server:
     image: fluxcell/server
-    build: . 
+    build:
+      context: ./server
   postgres:
     image: postgres
     restart: always

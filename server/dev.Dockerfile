@@ -6,6 +6,6 @@ WORKDIR /server
 RUN npm install -g yarn
 RUN yarn install
 
-EXPOSE 4444
+EXPOSE 4000
 CMD [ "yarn", "start" ]
 

@@ -35,7 +35,7 @@ services=(
 )
 
 # build the docker-compose command
-script="docker-compose -p fluxcell "
+script="docker-compose -p fluxcell -f docker-compose.yml "
 
 for service in "${services[@]}"
 do

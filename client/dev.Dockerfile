@@ -1,6 +1,6 @@
 # build environment
 
-FROM node:10-alpine as builder
+FROM node:10.8.0
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
@@ -18,6 +18,6 @@ COPY --chown=node:node . .
 
 # development environment
 
-EXPOSE 80
+EXPOSE 3000
 CMD ["yarn", "start"]
 

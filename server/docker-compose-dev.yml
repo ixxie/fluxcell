@@ -2,5 +2,10 @@ version: "3.7"
 
 services:
   server:
+    ports:
+      - 4000:4000
+    build:
+      dockerfile: dev.Dockerfile
     volumes:
-      - ./src:/server 
+      - ./server:/server 
+      - /server/node_modules
