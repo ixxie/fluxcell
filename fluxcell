@@ -1,7 +1,30 @@
 #!/usr/bin/env bash
-set -eu
+set -eux
 
 # parse arguments
+
+mode='normal'
+
+
+key="--dummy"
+while [[ $key =~ ^--* ]]
+do
+  key="$1"
+  case $key in
+    --*)
+    mode="${key#--}"
+    shift # past argument
+    ;;
+    -*)
+    key="${key#-}"
+    value="$2"
+    declare "$key=$value"
+    shift # key
+    shift # value
+    ;;
+  esac
+done
+
 command="$1"
 args="${@:2}"
 
@@ -12,11 +35,15 @@ services=(
 )
 
 # build the docker-compose command
-script="docker-compose -p fluxcell "
+script="docker-compose -p fluxcell -f docker-compose.yml "
 
 for service in "${services[@]}"
 do
   script+="-f ./$service/docker-compose.yml "
+  if [[ $mode == 'dev' ]];
+    then
+      script+="-f ./$service/docker-compose-dev.yml "
+  fi
 done
 
 script+="$command $args"
