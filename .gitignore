@@ -1,4 +1,7 @@
 node_modules
+.vscode/*
+store/*
 build
 *.log
 .vscode
+__pycache__/

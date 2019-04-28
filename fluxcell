@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eux
+set -eu
 
 # parse arguments
 
@@ -30,6 +30,8 @@ args="${@:2}"
 
 # find compose files in these dirs
 services=(
+  ai
+  bot
   client 
   server
 )

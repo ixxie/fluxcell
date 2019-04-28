@@ -1,13 +1,11 @@
 version: '3.7'
 
 services:
-  freenode-fluxbot:
-    image: fluxcraft/fluxbot
-    volumes:
-      - ./data/freenode:/data/
-    build: .
-  maddshark-fluxbot:
-    image: fluxcraft/fluxbot
-    volumes:
-      - ./data/maddshark:/data/
-    build: .
+
+  bot:
+    build:
+      context: ./bot
+    image: fluxcell/bot
+    restart: unless-stopped
+    env_file:
+      - ./bot/.env

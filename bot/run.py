@@ -1,5 +1,5 @@
-from fluxbot.fluxbot import Fluxbot
+from bot.irc import IrcBot
 
-fluxbot = Fluxbot(config_file='/data/config.yaml')
+bot = IrcBot(config_file='/store/bot/config.yml')
 
-fluxbot.start()
+bot.start()
