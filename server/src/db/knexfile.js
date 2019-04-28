@@ -1,9 +1,11 @@
+require('dotenv').config({ path: '../../.env' });
+
 const host = process.env.PGHOST;
 const user = process.env.PGUSER;
 const database = process.env.PGDATABASE;
 const password = process.env.PGPASSWORD;
-
-const config = {
+console.log(user);
+module.exports = {
   development: {
     client: 'postgresql',
     connection: {
@@ -32,5 +34,3 @@ const config = {
     },
   },
 };
-
-export default config;

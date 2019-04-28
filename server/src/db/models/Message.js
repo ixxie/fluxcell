@@ -38,10 +38,10 @@ export default class Message extends Model {
     };
   }
 
-  $beforeInsert() {
-    this.created = getLocalTime();
-  }
   $beforeUpdate() {
-    this.updated = getLocalTime();
+    this.updated_at = getLocalTime();
+  }
+  $beforeInsert() {
+    this.created_at = getLocalTime();
   }
 }

@@ -29,9 +29,9 @@ module.exports = function restApi(app) {
 
   app.post('/api/createUser', async (req, res) => {
     log('creating new User', req.body);
-    const { username, email } = req.body;
+    const { userName, email, spaceId } = req.body;
 
-    const r = await createUser({ username, email });
+    const r = await createUser({ userName, email, spaceId });
 
     res.json({ payload: r });
   });
@@ -43,5 +43,10 @@ module.exports = function restApi(app) {
     const r = await createMessage({ userId, channelId, body });
 
     res.json({ payload: r });
+  });
+
+  app.get('/api/getSpaceByName', (req, res) => {
+    log('req.query', req.query);
+    res.json({ payload: 'ok', status: 'getTest OK' });
   });
 };

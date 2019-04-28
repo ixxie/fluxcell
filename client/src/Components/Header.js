@@ -41,22 +41,23 @@ export default class Header extends React.Component {
   }
 
   renderLoginButton() {
-
-    return (<Button
-      color="primary"
-      onClick={this.login}
-    > Log In </Button>);
+    return (
+      <Button color="primary" onClick={this.login}>
+        {' '}
+        Log In{' '}
+      </Button>
+    );
   }
 
   renderLogoutButton() {
-
-    return (<Button
-      color="primary"
-      onClick={this.logout}
-    > Log Out </Button>);
+    return (
+      <Button color="primary" onClick={this.logout}>
+        {' '}
+        Log Out{' '}
+      </Button>
+    );
   }
   render() {
-
     const isAuthenticated = authClient.isAuthenticated();
     return (
       <div className="header">
@@ -70,21 +71,9 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                { !isAuthenticated && this.renderLoginButton() }
-                { isAuthenticated && this.renderLogoutButton() }
+                {!isAuthenticated && this.renderLoginButton()}
+                {isAuthenticated && this.renderLogoutButton()}
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/#testbench">Testbench</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>

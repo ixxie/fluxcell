@@ -20,6 +20,9 @@ export default class Attachment extends Model {
     };
   }
   $beforeUpdate() {
-    this.updated = getLocalTime();
+    this.updated_at = getLocalTime();
+  }
+  $beforeInsert() {
+    this.created_at = getLocalTime();
   }
 }

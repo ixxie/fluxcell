@@ -42,6 +42,9 @@ export default class Channel extends Model {
     };
   }
   $beforeUpdate() {
-    this.updated = getLocalTime();
+    this.updated_at = getLocalTime();
+  }
+  $beforeInsert() {
+    this.created_at = getLocalTime();
   }
 }

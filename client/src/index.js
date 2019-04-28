@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloProvider } from 'react-apollo';
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import { reducer as form } from 'redux-form';
 import thunk from 'redux-thunk';
@@ -10,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logger from 'redux-logger';
 import appReducer from './reducers';
 import App from './App';
+import ApolloClient from 'apollo-boost';
 import registerServiceWorker from './registerServiceWorker';
 import './Font.css';
 import './index.css';
@@ -29,10 +31,16 @@ const reducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+});
+
 const store = createStore(reducer, composeEnhancers(applyMiddleware(...middlewares)));
 ReactDOM.render(
   <Provider store={store}>
-    <App id="root-app" />
+    <ApolloProvider client={client}>
+      <App id="root-app" />
+    </ApolloProvider>
   </Provider>,
   document.getElementById('root')
 );

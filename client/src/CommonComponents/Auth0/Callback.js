@@ -12,7 +12,7 @@ class Callback extends Component {
 
     const profile = JSON.parse(sessionStorage.getItem('profile'));
 
-    const res = await createUser({ name: profile.name, email: '' });
+    const res = await createUser({ userName: profile.name, email: '', spaceId: 1 });
     debugger;
     this.props.history.replace('/');
   }
